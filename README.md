@@ -1,59 +1,93 @@
 # Emitify
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.0.
+## Sobre o Projeto
 
-## Development server
+**Emitify** é um sistema web desenvolvido com **Angular** e **Supabase** para automatizar a criação e emissão de recibos de diferentes tipos, como:
+- Recibo de entrega de pagamentos
+- Recibo de combustível
+- Recibo de recebimento de mercadoria
 
-To start a local development server, run:
+O objetivo é facilitar a geração e organização de recibos, permitindo ao usuário personalizar modelos e emitir documentos de forma rápida e intuitiva.
 
-```bash
+## Tecnologias Utilizadas
+- **Angular 19** (Frontend)
+- **Supabase** (Backend "no code")
+- **NG-ZORRO** (Componentes)
+
+## Instalação e Configuração
+
+### 1. Clone o Repositório
+```sh
+git clone https://github.com/seu-usuario/emitify.git
+cd emitify
+```
+
+### 2. Instale as Dependências
+```sh
+npm install
+```
+
+### 3. Configure o Supabase
+- Crie uma conta no [Supabase](https://supabase.com/)
+- Configure um novo projeto e obtenha as chaves de API
+- Crie um arquivo `.env` na raiz do projeto e adicione suas credenciais:
+  ```ini
+  SUPABASE_URL=your_supabase_url
+  SUPABASE_KEY=your_supabase_key
+  ```
+
+### 4. Execute o Projeto
+```sh
 ng serve
 ```
+O sistema estará disponível em `http://localhost:4200/`
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Como Usar
+1. **Crie um Modelo de Recibo**: Defina os campos necessários, como nome do pagador, valor, data, etc.
+2. **Preencha os Dados**: Insira as informações do recibo.
+3. **Gere o Documento**: O sistema gera um PDF pronto para download e impressão.
 
-## Code scaffolding
+## Contribuição
+Se você deseja contribuir com melhorias no **Emitify**, siga os passos abaixo:
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+### 1. Fork o Repositório
+Clique no botão "Fork" no GitHub e clone o repositório forkado:
+```sh
+git clone https://github.com/seu-usuario/emitify.git
+cd emitify
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
+### 2. Crie uma Branch para Sua Feature
+```sh
+git checkout -b minha-nova-feature
 ```
 
-## Building
+### 3. Desenvolva e Teste
+- Implemente sua feature ou correção de bug
+- Teste localmente
 
-To build the project run:
-
-```bash
-ng build
+### 4. Faça um Commit
+```sh
+git add .
+git commit -m "Adiciona nova feature X"
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
+### 5. Envie suas Mudanças
+```sh
+git push origin minha-nova-feature
 ```
 
-## Running end-to-end tests
+### 6. Abra um Pull Request
+- Acesse o repositório original no GitHub
+- Clique em "New Pull Request"
+- Descreva sua contribuição e envie
 
-For end-to-end (e2e) testing, run:
+## Contato
+Caso tenha dúvidas ou sugestões, entre em contato:
+- 📧 Email: emronald15el@gmail.com
+- 🔗 GitHub: [ronaldemanuel](https://github.com/ronaldemanuel)
 
-```bash
-ng e2e
-```
+---
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+📜 **Licença**: Este projeto está sob a licença MIT.
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
