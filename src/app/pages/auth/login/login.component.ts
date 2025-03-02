@@ -10,6 +10,9 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
+import { AuthService } from '../../../services/auth/auth.service';
+import { Router } from '@angular/router';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +24,9 @@ import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
     NzInputModule,
     NzCardModule,
     NzPageHeaderModule,
+    NzAvatarModule,
   ],
+  providers: [AuthService],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
@@ -33,9 +38,15 @@ export class LoginComponent {
     // remember: this.fb.control(true),
   });
 
+  constructor(private authService: AuthService, private router: Router) {}
+
   submitForm(): void {
     if (this.validateForm.valid) {
-      console.log('submit', this.validateForm.value);
+      const { email, password } = this.validateForm.value;
+      if (email && password) {
+        this.authService.submitLogin(email, password);
+        this.router.navigateByUrl('/');
+      }
     } else {
       Object.values(this.validateForm.controls).forEach((control) => {
         if (control.invalid) {
