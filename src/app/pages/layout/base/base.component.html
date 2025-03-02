@@ -40,6 +40,11 @@
         </ul>
       </li>
     </ul>
+    <div class="logout-button">
+      <button nz-button nzType="primary" nzDanger nzBlock (click)="logOut()">
+        <i nz-icon nzType="logout"></i> @if(!isCollapsed) { Sair }
+      </button>
+    </div>
   </nz-sider>
   <nz-layout>
     <nz-header>
