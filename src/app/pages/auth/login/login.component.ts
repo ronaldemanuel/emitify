@@ -12,7 +12,6 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 import { AuthService } from '../../../services/auth/auth.service';
 import { Router } from '@angular/router';
-import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +23,6 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
     NzInputModule,
     NzCardModule,
     NzPageHeaderModule,
-    NzAvatarModule,
   ],
   providers: [AuthService],
   templateUrl: './login.component.html',

@@ -43,13 +43,31 @@
   </nz-sider>
   <nz-layout>
     <nz-header>
-      <div class="app-header">
-        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
-          <nz-icon
-            class="trigger"
-            [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
-          />
-        </span>
+      <div class="app-header" style="width: 100%">
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          "
+        >
+          <div>
+            <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+              <nz-icon
+                class="trigger"
+                [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+              />
+            </span>
+          </div>
+          <div style="margin-right: 25px">
+            <nz-avatar
+              nzSize="large"
+              nzIcon="user"
+              (click)="openDrawer()"
+              class="avatar-clickable"
+            ></nz-avatar>
+          </div>
+        </div>
       </div>
     </nz-header>
     <nz-content>
@@ -58,4 +76,18 @@
       </div>
     </nz-content>
   </nz-layout>
+  <nz-drawer
+    [nzClosable]="true"
+    [nzVisible]="drawerVisible"
+    nzPlacement="right"
+    (nzOnClose)="closeDrawer()"
+    [nzFooter]="drawerFooter"
+    [nzTitle]="loggedUser?.email"
+  >
+    <ng-template #drawerFooter>
+      <button nz-button nzType="primary" nzDanger nzBlock (click)="logOut()">
+        <i nz-icon nzType="logout"></i> Sair
+      </button>
+    </ng-template>
+  </nz-drawer>
 </nz-layout>

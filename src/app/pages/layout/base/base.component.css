@@ -78,3 +78,7 @@ nz-content {
   background: #fff;
   height: 100%;
 }
+
+.avatar-clickable {
+  cursor: pointer;
+}
