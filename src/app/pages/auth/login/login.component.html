@@ -1,0 +1,60 @@
+<nz-page-header>
+  <nz-page-header-title
+    style="display: flex; flex-direction: row; align-items: top"
+  >
+    <img src="logo-emitify.png" alt="logo" style="width: 40px; height: 47px" />
+    <h1 style="margin-left: 10px">Emitify</h1>
+  </nz-page-header-title>
+</nz-page-header>
+
+<nz-card class="login-card" style="width: 300px" nzTitle="Login">
+  <form
+    nz-form
+    [formGroup]="validateForm"
+    class="login-form"
+    (ngSubmit)="submitForm()"
+  >
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Insira um e-mail válido!">
+        <nz-input-group nzPrefixIcon="user">
+          <input
+            type="text"
+            nz-input
+            formControlName="email"
+            placeholder="E-mail"
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Por favor, insira uma senha!">
+        <nz-input-group nzPrefixIcon="lock">
+          <input
+            type="password"
+            nz-input
+            formControlName="password"
+            placeholder="Senha"
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <div nz-row class="login-form-margin">
+      <!-- <div nz-col [nzSpan]="12">
+        <a class="login-form-forgot">Forgot password</a>
+      </div> -->
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center">
+      <button
+        nz-button
+        class="login-form-button login-form-margin"
+        [nzType]="'primary'"
+        type="submit"
+      >
+        Login
+      </button>
+      <button nz-button class="login-form-button login-form-margin">
+        Cadastro
+      </button>
+    </div>
+  </form>
+</nz-card>
