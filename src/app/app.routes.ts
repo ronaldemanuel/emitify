@@ -13,6 +13,10 @@ export const routes: Routes = [
         path: '',
         loadChildren: () => import('./pages/welcome/welcome.routes'),
       },
+      {
+        path: 'client',
+        loadChildren: () => import('./pages/client/client.routes'),
+      },
     ],
   },
 ];
