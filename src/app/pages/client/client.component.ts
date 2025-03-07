@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import {
   FormControl,
+  FormsModule,
   NonNullableFormBuilder,
   ReactiveFormsModule,
   Validators,
@@ -14,6 +15,7 @@ import { AuthService } from '../../services/auth/auth.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzListModule } from 'ng-zorro-antd/list';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'app-client',
@@ -26,6 +28,8 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
     NzInputModule,
     NzListModule,
     NzTypographyModule,
+    NzModalModule,
+    FormsModule,
   ],
   templateUrl: './client.component.html',
   styleUrl: './client.component.css',
@@ -37,10 +41,16 @@ export class ClientComponent {
 
   data: { name: string }[] = [];
 
+  isVisible = false;
+  isConfirmLoading = false;
+
+  clientEditName?: string;
+
   constructor(
     private clientService: ClientService,
     private authService: AuthService,
-    private message: NzMessageService
+    private message: NzMessageService,
+    private modalService: NzModalService
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -124,7 +134,20 @@ export class ClientComponent {
     );
   }
 
-  startInfoMessage(): void {
-    this.message.info('edit');
+  showEditModal(index: number): void {
+    this.clientEditName = this.data[index].name;
+    this.isVisible = true;
+  }
+
+  handleOk(): void {
+    this.isConfirmLoading = true;
+    setTimeout(() => {
+      this.isVisible = false;
+      this.isConfirmLoading = false;
+    }, 1000);
+  }
+
+  handleCancel(): void {
+    this.isVisible = false;
   }
 }
