@@ -54,3 +54,19 @@
     </nz-form-control>
   </nz-form-item>
 </form>
+<h3>Beneficitários \ Clientes cadastrados:</h3>
+<ul nz-list [nzDataSource]="data" nzBordered class="custom-list">
+  @for (item of data; track item) {
+  <li nz-list-item nzNoFlex>
+    <button
+      nz-button
+      nzType="default"
+      (click)="startInfoMessage()"
+      class="full-width"
+    >
+      {{ item.name }}
+    </button>
+  </li>
+  }
+</ul>
+

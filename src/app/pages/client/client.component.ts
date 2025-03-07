@@ -12,6 +12,8 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { ClientService } from '../../services/client/client.service';
 import { AuthService } from '../../services/auth/auth.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzListModule } from 'ng-zorro-antd/list';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
 
 @Component({
   selector: 'app-client',
@@ -22,6 +24,8 @@ import { NzMessageService } from 'ng-zorro-antd/message';
     NzFormModule,
     NzIconModule,
     NzInputModule,
+    NzListModule,
+    NzTypographyModule,
   ],
   templateUrl: './client.component.html',
   styleUrl: './client.component.css',
@@ -31,14 +35,17 @@ export class ClientComponent {
   validateForm = this.fb.group({});
   listOfClients: Array<{ id: number; client: string }> = [];
 
+  data: { name: string }[] = [];
+
   constructor(
     private clientService: ClientService,
     private authService: AuthService,
     private message: NzMessageService
   ) {}
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.addField();
+    this.data = await this.getClients();
   }
 
   addField(e?: MouseEvent): void {
@@ -95,6 +102,13 @@ export class ClientComponent {
     }
   }
 
+  async getClients() {
+    const session = await this.authService.getSession();
+    const userId = session?.user.id;
+
+    return this.clientService.getClientsByUserId(userId!);
+  }
+
   startLoadingMessage(): string {
     const id = this.message.loading('Salvando...', {
       nzDuration: 0,
@@ -108,5 +122,9 @@ export class ClientComponent {
       'success',
       `${this.listOfClients.length} clientes salvos com sucesso!`
     );
+  }
+
+  startInfoMessage(): void {
+    this.message.info('edit');
   }
 }
