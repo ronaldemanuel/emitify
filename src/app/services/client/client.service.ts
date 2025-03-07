@@ -19,4 +19,13 @@ export class ClientService extends DatabaseService {
 
     return createdClients;
   }
+
+  async getClientsByUserId(userId: string): Promise<[] | Client[]> {
+    const { data: clients } = await this.supabase
+      .from('clients')
+      .select('name')
+      .eq('user_id', userId);
+
+    return clients || [];
+  }
 }
